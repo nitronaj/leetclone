@@ -1,4 +1,4 @@
-import { Flex, Container, Heading, Stack, Text, Button, Icon, IconProps } from '@chakra-ui/react';
+import { Button, Container, Flex, Heading, Icon, IconProps, Stack, Text } from '@chakra-ui/react';
 
 const Illustration = (props: IconProps) => {
   return (
@@ -736,7 +736,7 @@ const Illustration = (props: IconProps) => {
   );
 };
 
-export default function CallToActionWithIllustration() {
+export default function Hero() {
   return (
     <Container maxW={'5xl'}>
       <Stack textAlign={'center'} align={'center'} spacing={{ base: 6, md: 8 }} py={{ base: 16, md: 20 }}>
