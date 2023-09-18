@@ -1,3 +1,5 @@
+'use client';
+
 import AuthModal from '@/components/Modals/AuthModal';
 import { Container } from '@chakra-ui/react';
 import Hero from '@/components/Hero/Hero';
