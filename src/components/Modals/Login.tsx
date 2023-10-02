@@ -10,8 +10,17 @@ import {
   ModalHeader,
   Stack,
 } from '@chakra-ui/react';
+import { useSetRecoilState } from 'recoil';
+
+import { AuthModalType, authModalState } from '@/atoms/authModelAtom';
 
 export default function Login() {
+  const setAuthModalState = useSetRecoilState(authModalState);
+
+  const handleClick = (type: AuthModalType) => () => {
+    setAuthModalState((prev) => ({ ...prev, isOpen: true, type }));
+  };
+
   return (
     <Stack spacing={4}>
       <ModalHeader>Sign in to your account</ModalHeader>
@@ -29,7 +38,7 @@ export default function Login() {
 
           <Stack direction={{ base: 'column', sm: 'row' }} align={'start'} justify={'space-between'}>
             <Checkbox>Remember me</Checkbox>
-            <Link href="/forgetpassword" color={'blue.400'}>
+            <Link color={'blue.400'} onClick={handleClick('forgotPassword')}>
               Forgot password?
             </Link>
           </Stack>

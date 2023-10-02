@@ -6,17 +6,18 @@ import Hero from '@/components/Hero/Hero';
 import Navbar from '@/components/Navbar/Navbar';
 // import SignUp from '@/components/Modals/Signup';
 // import Login from '@/components/Modals/Loging';
-import ResetPassword from '@/components/Modals/ResetPassword';
+import { authModalState } from '@/atoms/authModelAtom';
+import { useRecoilValue } from 'recoil';
 
 const AuthPage = () => {
+  const authModel = useRecoilValue(authModalState);
+
   return (
     <>
       <Navbar />
       <Container maxW={'5xl'}>
         <Hero />
-        <AuthModal>
-          <ResetPassword />
-        </AuthModal>
+        {authModel.isOpen && <AuthModal />}
       </Container>
     </>
   );

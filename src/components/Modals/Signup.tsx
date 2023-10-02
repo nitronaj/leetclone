@@ -16,9 +16,18 @@ import {
   Text,
 } from '@chakra-ui/react';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
+import { useSetRecoilState } from 'recoil';
+
+import { AuthModalType, authModalState } from '@/atoms/authModelAtom';
 
 export default function SignUp() {
   const [showPassword, setShowPassword] = useState(false);
+
+  const setAuthModalState = useSetRecoilState(authModalState);
+
+  const handleClick = (type: AuthModalType) => () => {
+    setAuthModalState((prev) => ({ ...prev, isOpen: true, type }));
+  };
 
   return (
     <Stack spacing={4}>
@@ -65,7 +74,10 @@ export default function SignUp() {
           </Box>
           <Stack pt={8}>
             <Text align={'center'}>
-              Already a user? <Link color={'blue.400'}>Login</Link>
+              Already a user?{' '}
+              <Link color={'blue.400'} onClick={handleClick('login')}>
+                Login
+              </Link>
             </Text>
           </Stack>
         </Stack>

@@ -1,6 +1,9 @@
-import { Button, Container, Flex, Heading, Icon, IconProps, Stack, Text } from '@chakra-ui/react';
+import { Box, Button, Container, Flex, Heading, Icon, IconProps, Stack, Text } from '@chakra-ui/react';
+import Image from 'next/image';
 
-const Illustration = (props: IconProps) => {
+import heroImage from '../../../public/images/hero2.png';
+
+/* const Illustration = (props: IconProps) => {
   return (
     <Icon width="100%" viewBox="0 0 702 448" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
       <path
@@ -734,7 +737,7 @@ const Illustration = (props: IconProps) => {
       </defs>
     </Icon>
   );
-};
+}; */
 
 export default function Hero() {
   return (
@@ -742,7 +745,7 @@ export default function Hero() {
       <Stack textAlign={'center'} align={'center'} spacing={{ base: 6, md: 8 }} py={{ base: 16, md: 20 }}>
         <Heading fontWeight={600} fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }} lineHeight={'110%'}>
           Level Up Your Programming Skills{' '}
-          <Text as={'span'} fontSize={{ base: 'xl', sm: '2xl', md: '4xl' }} color={'orange.400'}>
+          <Text as={'span'} fontSize={{ base: 'xl', sm: '2xl', md: '4xl' }} color={'purple.400'}>
             Solving Problems. Unlocking Opportunities.
           </Text>
         </Heading>
@@ -751,7 +754,7 @@ export default function Hero() {
           Community of Developers Worldwide and Level Up Your Coding Skills Today.
         </Text>
         <Stack spacing={6} direction={'row'}>
-          <Button rounded={'full'} px={6} colorScheme={'orange'} bg={'orange.400'} _hover={{ bg: 'orange.500' }}>
+          <Button rounded={'full'} px={6} colorScheme={'purple'} bg={'purple.400'} _hover={{ bg: 'purple.500' }}>
             Get started
           </Button>
           <Button rounded={'full'} px={6}>
@@ -759,7 +762,10 @@ export default function Hero() {
           </Button>
         </Stack>
         <Flex w={'full'}>
-          <Illustration height={{ sm: '24rem', lg: '28rem' }} mt={{ base: 12, sm: 16 }} />
+          {/* <Illustration height={{ sm: '24rem', lg: '28rem' }} mt={{ base: 12, sm: 16 }} /> */}
+          <Box mt={{ base: 12, sm: 16 }}>
+            <Image src={heroImage} alt="hero image" />
+          </Box>
         </Flex>
       </Stack>
     </Container>

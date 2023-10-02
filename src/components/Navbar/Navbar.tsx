@@ -20,9 +20,18 @@ import { ChevronDownIcon, ChevronRightIcon, CloseIcon, HamburgerIcon, MoonIcon, 
 
 import Logo from './Logo';
 
+import { AuthModalType, authModalState } from '@/atoms/authModelAtom';
+import { useSetRecoilState } from 'recoil';
+
 export default function WithSubnavigation() {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onToggle } = useDisclosure();
+
+  const setAuthModalState = useSetRecoilState(authModalState);
+
+  const handleClick = (type: AuthModalType) => () => {
+    setAuthModalState((prev) => ({ ...prev, isOpen: true, type }));
+  };
 
   return (
     <Box
@@ -58,23 +67,19 @@ export default function WithSubnavigation() {
           </Flex>
 
           {/* Right Side */}
-          <Stack flex={{ base: 1, md: 0 }} justify={'flex-end'} direction={'row'} spacing={6}>
-            <Button onClick={toggleColorMode}>{colorMode === 'light' ? <MoonIcon /> : <SunIcon />}</Button>
-
-            <Button as={'a'} fontSize={'sm'} fontWeight={400} variant={'link'} href={'#'}>
+          <Stack flex={{ base: 1, md: 0 }} justify={'flex-end'} direction={'row'} spacing={0}>
+            <Button onClick={toggleColorMode} variant={'ghost'}>
+              {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+            </Button>
+            <Button fontSize={'sm'} fontWeight={400} variant={'ghost'} onClick={handleClick('login')} padding={''}>
               Sign In
             </Button>
             <Button
-              as={'a'}
-              display={{ base: 'none', md: 'inline-flex' }}
+              variant={'ghost'}
+              display={{ base: 'none', md: 'inline-block' }}
               fontSize={'sm'}
-              fontWeight={600}
-              color={'white'}
-              bg={'pink.400'}
-              href={'#'}
-              _hover={{
-                bg: 'pink.300',
-              }}
+              fontWeight={400}
+              onClick={handleClick('register')}
             >
               Sign Up
             </Button>
