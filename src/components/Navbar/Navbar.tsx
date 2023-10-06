@@ -1,3 +1,4 @@
+import { ChevronDownIcon, ChevronRightIcon, CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import {
   Box,
   Button,
@@ -16,12 +17,11 @@ import {
   useColorModeValue,
   useDisclosure,
 } from '@chakra-ui/react';
-import { ChevronDownIcon, ChevronRightIcon, CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
+import { useSetRecoilState } from 'recoil';
+
+import { authModalState,AuthModalType } from '@/atoms/authModelAtom';
 
 import Logo from './Logo';
-
-import { AuthModalType, authModalState } from '@/atoms/authModelAtom';
-import { useSetRecoilState } from 'recoil';
 
 export default function WithSubnavigation() {
   const { colorMode, toggleColorMode } = useColorMode();

@@ -12,7 +12,7 @@ import {
 } from '@chakra-ui/react';
 import { useSetRecoilState } from 'recoil';
 
-import { AuthModalType, authModalState } from '@/atoms/authModelAtom';
+import { authModalState, AuthModalType } from '@/atoms/authModelAtom';
 
 export default function Login() {
   const setAuthModalState = useSetRecoilState(authModalState);
