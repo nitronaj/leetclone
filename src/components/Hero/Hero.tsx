@@ -1,4 +1,4 @@
-import { Box, Button, Container, Flex, Heading, Icon, IconProps, Stack, Text } from '@chakra-ui/react';
+import { Box, Button, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 
 import heroImage from '../../../public/images/hero2.png';
@@ -741,33 +741,51 @@ import heroImage from '../../../public/images/hero2.png';
 
 export default function Hero() {
   return (
-    <Container maxW={'5xl'}>
-      <Stack textAlign={'center'} align={'center'} spacing={{ base: 6, md: 8 }} py={{ base: 16, md: 20 }}>
-        <Heading fontWeight={600} fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }} lineHeight={'110%'}>
-          Level Up Your Programming Skills{' '}
-          <Text as={'span'} fontSize={{ base: 'xl', sm: '2xl', md: '4xl' }} color={'purple.400'}>
-            Solving Problems. Unlocking Opportunities.
-          </Text>
-        </Heading>
-        <Text color={'gray.500'} maxW={'3xl'}>
-          Unlock Your Coding Potential. Master Algorithms, Ace Interviews, and Launch Your Tech Career. Join Our
-          Community of Developers Worldwide and Level Up Your Coding Skills Today.
+    <Stack
+      textAlign={'center'}
+      align={'center'}
+      spacing={{ base: 6, md: 8 }}
+      py={{ base: 16, md: 20 }}
+    >
+      <Heading
+        fontWeight={600}
+        fontSize={{ base: '3xl', sm: '4xl', md: '6xl' }}
+        lineHeight={'110%'}
+      >
+        Level Up Your Programming Skills{' '}
+        <Text
+          as={'span'}
+          fontSize={{ base: 'xl', sm: '2xl', md: '4xl' }}
+          color={'purple.400'}
+        >
+          Solving Problems. Unlocking Opportunities.
         </Text>
-        <Stack spacing={6} direction={'row'}>
-          <Button rounded={'full'} px={6} colorScheme={'purple'} bg={'purple.400'} _hover={{ bg: 'purple.500' }}>
-            Get started
-          </Button>
-          <Button rounded={'full'} px={6}>
-            Learn more
-          </Button>
-        </Stack>
-        <Flex w={'full'}>
-          {/* <Illustration height={{ sm: '24rem', lg: '28rem' }} mt={{ base: 12, sm: 16 }} /> */}
-          <Box mt={{ base: 12, sm: 16 }}>
-            <Image src={heroImage} alt="hero image" />
-          </Box>
-        </Flex>
+      </Heading>
+      <Text color={'gray.500'} maxW={'3xl'}>
+        Unlock Your Coding Potential. Master Algorithms, Ace Interviews, and
+        Launch Your Tech Career. Join Our Community of Developers Worldwide and
+        Level Up Your Coding Skills Today.
+      </Text>
+      <Stack spacing={6} direction={'row'}>
+        <Button
+          rounded={'full'}
+          px={6}
+          colorScheme={'purple'}
+          bg={'purple.400'}
+          _hover={{ bg: 'purple.500' }}
+        >
+          Get started
+        </Button>
+        <Button rounded={'full'} px={6}>
+          Learn more
+        </Button>
       </Stack>
-    </Container>
+      <Flex w={'full'}>
+        {/* <Illustration height={{ sm: '24rem', lg: '28rem' }} mt={{ base: 12, sm: 16 }} /> */}
+        <Box mt={{ base: 12, sm: 16 }}>
+          <Image src={heroImage} alt="hero image" />
+        </Box>
+      </Flex>
+    </Stack>
   );
 }

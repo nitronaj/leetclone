@@ -23,7 +23,7 @@ import { useSetRecoilState } from 'recoil';
 import { authModalState, AuthModalType } from '@/atoms/authModelAtom';
 import { auth } from '@/firebase/firebase';
 
-import FormAlert, { RegistrationErrorType } from './FormAlert';
+import FormAlert, { ErrorCode } from './FormAlert';
 type FormData = {
   displayName: string;
   email: string;
@@ -34,12 +34,9 @@ export default function SignUp() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const setAuthModalState = useSetRecoilState(authModalState);
-  const [createUserWithEmailAndPassword, , loading, registerError] = useCreateUserWithEmailAndPassword(auth);
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>();
+  const [createUserWithEmailAndPassword, , loading, registerError] =
+    useCreateUserWithEmailAndPassword(auth);
+  const { register, handleSubmit } = useForm<FormData>();
 
   const handleClick = (type: AuthModalType) => () => {
     setAuthModalState((prev) => ({ ...prev, isOpen: true, type }));
@@ -58,13 +55,16 @@ export default function SignUp() {
     }
   };
 
-  if (errors) console.log(errors);
-
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={4}>
         <ModalHeader>Create your account</ModalHeader>
-        {registerError && <FormAlert status="error" errorType={registerError?.code as RegistrationErrorType} />}
+        {registerError && (
+          <FormAlert
+            status="error"
+            errorCode={registerError?.code as ErrorCode}
+          />
+        )}
         <ModalBody pb={6}>
           <Stack spacing={4}>
             <FormControl id="displayName">
@@ -86,7 +86,12 @@ export default function SignUp() {
                   autoComplete="on"
                 />
                 <InputRightElement h={'full'}>
-                  <Button variant={'ghost'} onClick={() => setShowPassword((showPassword) => !showPassword)}>
+                  <Button
+                    variant={'ghost'}
+                    onClick={() =>
+                      setShowPassword((showPassword) => !showPassword)
+                    }
+                  >
                     {showPassword ? <ViewIcon /> : <ViewOffIcon />}
                   </Button>
                 </InputRightElement>

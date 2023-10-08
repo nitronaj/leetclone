@@ -1,25 +1,41 @@
 'use client';
 
-import AuthModal from '@/components/Modals/AuthModal';
-import { Container } from '@chakra-ui/react';
-import Hero from '@/components/Hero/Hero';
-import Navbar from '@/components/Navbar/Navbar';
-// import SignUp from '@/components/Modals/Signup';
-// import Login from '@/components/Modals/Loging';
-import { authModalState } from '@/atoms/authModelAtom';
+import { useEffect, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import { Box, Stack } from '@chakra-ui/react';
+import { useRouter } from 'next/navigation';
 import { useRecoilValue } from 'recoil';
+
+import { authModalState } from '@/atoms/authModelAtom';
+import Hero from '@/components/Hero/Hero';
+import { LoadingSkeleton } from '@/components/LoadingSkeleton';
+import AuthModal from '@/components/Modals/AuthModal';
+import { auth } from '@/firebase/firebase';
 
 const AuthPage = () => {
   const authModel = useRecoilValue(authModalState);
+  const [user, loading] = useAuthState(auth);
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    if (user) {
+      router.push('/');
+    }
+    if (!user && !loading) setIsLoading(false);
+  }, [loading, router, user]);
+
+  console.log(isLoading, user, loading);
+
+  if (isLoading) {
+    return <LoadingSkeleton isLoaded={isLoading} />;
+  }
 
   return (
-    <>
-      <Navbar />
-      <Container maxW={'5xl'}>
-        <Hero />
-        {authModel.isOpen && <AuthModal />}
-      </Container>
-    </>
+    <Stack>
+      <Hero />
+      {authModel.isOpen && <AuthModal />}
+    </Stack>
   );
 };
 
