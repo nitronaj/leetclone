@@ -6,6 +6,7 @@ import {
   Box,
   Button,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   Input,
   InputGroup,
@@ -34,9 +35,12 @@ export default function SignUp() {
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const setAuthModalState = useSetRecoilState(authModalState);
-  const [createUserWithEmailAndPassword, , loading, registerError] =
-    useCreateUserWithEmailAndPassword(auth);
-  const { register, handleSubmit } = useForm<FormData>();
+  const [createUserWithEmailAndPassword, , , registerError] = useCreateUserWithEmailAndPassword(auth);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<FormData>();
 
   const handleClick = (type: AuthModalType) => () => {
     setAuthModalState((prev) => ({ ...prev, isOpen: true, type }));
@@ -59,12 +63,7 @@ export default function SignUp() {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={4}>
         <ModalHeader>Create your account</ModalHeader>
-        {registerError && (
-          <FormAlert
-            status="error"
-            errorCode={registerError?.code as ErrorCode}
-          />
-        )}
+        {registerError && <FormAlert status="error" errorCode={registerError?.code as ErrorCode} />}
         <ModalBody pb={6}>
           <Stack spacing={4}>
             <FormControl id="displayName">
@@ -75,27 +74,26 @@ export default function SignUp() {
               <FormLabel>Email address</FormLabel>
               <Input type="email" {...register('email')} />
             </FormControl>
-            <FormControl id="password" isRequired>
+            <FormControl id="password" isRequired isInvalid={!!errors.password}>
               <FormLabel>Password</FormLabel>
               <InputGroup>
                 <Input
                   type={showPassword ? 'text' : 'password'}
                   {...register('password', {
-                    minLength: 8,
+                    minLength: {
+                      value: 8,
+                      message: 'Minimum length should be 8',
+                    },
                   })}
                   autoComplete="on"
                 />
                 <InputRightElement h={'full'}>
-                  <Button
-                    variant={'ghost'}
-                    onClick={() =>
-                      setShowPassword((showPassword) => !showPassword)
-                    }
-                  >
+                  <Button variant={'ghost'} onClick={() => setShowPassword((showPassword) => !showPassword)}>
                     {showPassword ? <ViewIcon /> : <ViewOffIcon />}
                   </Button>
                 </InputRightElement>
               </InputGroup>
+              <FormErrorMessage>{errors.password && errors.password.message}</FormErrorMessage>
             </FormControl>
           </Stack>
         </ModalBody>
@@ -112,7 +110,7 @@ export default function SignUp() {
                   bg: 'blue.500',
                 }}
                 type="submit"
-                isLoading={loading}
+                isLoading={isSubmitting}
               >
                 Sign up
               </Button>

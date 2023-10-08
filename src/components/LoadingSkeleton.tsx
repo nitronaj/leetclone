@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-  Box,
-  Skeleton,
-  SkeletonCircle,
-  SkeletonText,
-  Stack,
-} from '@chakra-ui/react';
+import { Box, Skeleton, SkeletonCircle, SkeletonText } from '@chakra-ui/react';
 
 export const LoadingSkeleton = ({
   isLoaded,

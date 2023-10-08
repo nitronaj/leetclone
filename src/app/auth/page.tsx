@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Box, Stack } from '@chakra-ui/react';
+import { Stack } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
 import { useRecoilValue } from 'recoil';
 
