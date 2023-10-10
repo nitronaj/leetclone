@@ -1,6 +1,5 @@
 'use client';
 
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { ChevronDownIcon, ChevronRightIcon, CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import {
   Box,
@@ -20,16 +19,24 @@ import {
   useColorModeValue,
   useDisclosure,
 } from '@chakra-ui/react';
+import { useSetRecoilState } from 'recoil';
 
-import { auth } from '@/firebase/firebase';
+import { authModalState, AuthModalType } from '@/atoms/authModelAtom';
 
 import Logo from './Logo';
-import UserMenu from './UserAvatar';
 
 export default function WithSubnavigation() {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onToggle } = useDisclosure();
-  const [user] = useAuthState(auth);
+
+  const setAuthModalState = useSetRecoilState(authModalState);
+
+  const handleClick = (type: AuthModalType) => () => {
+    setAuthModalState((prev) => ({ ...prev, isOpen: true, type }));
+  };
+
+  const linkColor = useColorModeValue('gray.600', 'gray.200');
+  const linkHoverColor = useColorModeValue('gray.800', 'white');
 
   return (
     <Box
@@ -65,11 +72,39 @@ export default function WithSubnavigation() {
           </Flex>
 
           {/* Right Side */}
-          <Stack flex={{ base: 1, md: 0 }} justify={'flex-end'} direction={'row'} spacing={0} alignItems={'center'}>
+          <Stack flex={{ base: 1, md: 0 }} justify={'flex-end'} alignItems={'center'} direction={'row'} spacing={2}>
             <Button onClick={toggleColorMode} variant={'ghost'}>
               {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
             </Button>
-            <UserMenu user={user} />
+            <Button
+              fontSize={'sm'}
+              fontWeight={500}
+              variant={'link'}
+              color={linkColor}
+              _hover={{
+                textDecoration: 'none',
+                color: linkHoverColor,
+              }}
+              onClick={handleClick('login')}
+            >
+              Sign In
+            </Button>
+            <Text fontSize={'sm'} fontWeight={400} color={linkColor}>
+              or
+            </Text>
+            <Button
+              variant={'link'}
+              fontSize={'sm'}
+              fontWeight={500}
+              color={linkColor}
+              _hover={{
+                textDecoration: 'none',
+                color: linkHoverColor,
+              }}
+              onClick={handleClick('register')}
+            >
+              Register
+            </Button>
           </Stack>
         </Flex>
 
@@ -228,7 +263,7 @@ interface NavItem {
 const NAV_ITEMS: Array<NavItem> = [
   {
     label: 'Problems',
-    href: '/problems',
+    href: '#problems',
   },
 ];
 

@@ -3,7 +3,6 @@ import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { ViewIcon, ViewOffIcon } from '@chakra-ui/icons';
 import {
-  Box,
   Button,
   FormControl,
   FormErrorMessage,
@@ -54,7 +53,6 @@ export default function SignUp() {
       }
       router.push('/');
     } catch (error: any) {
-      console.log(error);
       alert(error.message);
     }
   };
@@ -99,24 +97,12 @@ export default function SignUp() {
         </ModalBody>
         <ModalFooter pt={0}>
           <Stack w="100%">
-            <Box w="100%">
-              <Button
-                w="100%"
-                loadingText="Submitting"
-                size="lg"
-                bg={'blue.400'}
-                color={'white'}
-                _hover={{
-                  bg: 'blue.500',
-                }}
-                type="submit"
-                isLoading={isSubmitting}
-              >
-                Sign up
-              </Button>
-            </Box>
+            <Button loadingText="Submitting" colorScheme={'twitter'} type="submit" isLoading={isSubmitting}>
+              Sign up
+            </Button>
+
             <Stack pt={8}>
-              <Text align={'center'}>
+              <Text align={'left'}>
                 Already a user?{' '}
                 <Link color={'blue.400'} onClick={handleClick('login')}>
                   Login

@@ -4,6 +4,7 @@ import {
   Button,
   Checkbox,
   FormControl,
+  FormErrorMessage,
   FormLabel,
   Input,
   Link,
@@ -11,6 +12,7 @@ import {
   ModalFooter,
   ModalHeader,
   Stack,
+  Text,
 } from '@chakra-ui/react';
 import { useRouter } from 'next/navigation';
 import { useSetRecoilState } from 'recoil';
@@ -28,9 +30,12 @@ type FormData = {
 export default function Login() {
   const router = useRouter();
   const setAuthModalState = useSetRecoilState(authModalState);
-  const [signInWithEmailAndPassword, , loading, signInError] =
-    useSignInWithEmailAndPassword(auth);
-  const { register, handleSubmit } = useForm<FormData>();
+  const [signInWithEmailAndPassword, , , signInError] = useSignInWithEmailAndPassword(auth);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<FormData>();
 
   const handleClick = (type: AuthModalType) => () => {
     setAuthModalState((prev) => ({ ...prev, isOpen: true, type }));
@@ -40,64 +45,69 @@ export default function Login() {
     try {
       const newUser = await signInWithEmailAndPassword(email, password);
       if (!newUser) {
+        console.log('something went wrong');
         return;
       }
+
+      setAuthModalState((prev) => ({ ...prev, isOpen: false }));
+
       router.push('/');
     } catch (error: any) {
-      console.log(error);
       alert(error.message);
     }
   };
-
-  if (signInError) console.log(signInError);
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
       <Stack spacing={4}>
         <ModalHeader>Sign in to your account</ModalHeader>
-        {signInError && (
-          <FormAlert
-            status="error"
-            errorCode={signInError?.code as ErrorCode}
-          />
-        )}
-        <ModalBody pb={6}>
+        {signInError && <FormAlert status="error" errorCode={signInError?.code as ErrorCode} />}
+        <ModalBody pb={0}>
           <Stack spacing={4}>
             <FormControl id="email">
               <FormLabel>Email address</FormLabel>
 
               <Input type="email" placeholder="Email" {...register('email')} />
             </FormControl>
-            <FormControl id="password">
+            <FormControl id="password" isInvalid={!!errors.password}>
               <FormLabel>Password</FormLabel>
-              <Input type="password" {...register('password')} />
+              <Input
+                type="password"
+                {...register('password', {
+                  minLength: {
+                    value: 8,
+                    message: 'Minimum length should be 8',
+                  },
+                })}
+                autoComplete="on"
+              />
+              <FormErrorMessage>{errors.password && errors.password.message}</FormErrorMessage>
             </FormControl>
 
-            <Stack
-              direction={{ base: 'column', sm: 'row' }}
-              align={'start'}
-              justify={'space-between'}
-            >
+            <Stack direction={{ base: 'column', sm: 'row' }} align={'start'} justify={'space-between'}>
               <Checkbox>Remember me</Checkbox>
-              <Link color={'blue.400'} onClick={handleClick('forgotPassword')}>
-                Forgot password?
-              </Link>
             </Stack>
           </Stack>
         </ModalBody>
 
         <ModalFooter>
-          <Button
-            bg={'blue.400'}
-            color={'white'}
-            _hover={{
-              bg: 'blue.500',
-            }}
-            type="submit"
-            isLoading={loading}
-          >
-            Sign in
-          </Button>
+          <Stack w="100%">
+            <Button colorScheme={'twitter'} type="submit" isLoading={isSubmitting}>
+              Sign in
+            </Button>
+            <Link pt={2} color={'twitter.500'} onClick={handleClick('forgotPassword')} textAlign={'right'}>
+              Forgot password?
+            </Link>
+
+            <Stack pt={8}>
+              <Text align={'left'}>
+                Not Registered?{' '}
+                <Link color={'twitter.500'} onClick={handleClick('register')}>
+                  Create Account
+                </Link>
+              </Text>
+            </Stack>
+          </Stack>
         </ModalFooter>
       </Stack>
     </form>
