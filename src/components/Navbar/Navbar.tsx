@@ -20,16 +20,21 @@ import {
   useColorModeValue,
   useDisclosure,
 } from '@chakra-ui/react';
+import { useParams } from 'next/navigation';
 
 import { auth } from '@/firebase/firebase';
 
 import Logo from './Logo';
+import ProblemList from './ProblemList';
 import UserMenu from './UserAvatar';
 
 export default function WithSubnavigation() {
+  const params = useParams();
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onToggle } = useDisclosure();
   const [user] = useAuthState(auth);
+
+  const { pid } = params;
 
   return (
     <Box
@@ -39,7 +44,7 @@ export default function WithSubnavigation() {
       borderStyle={'solid'}
       borderColor={useColorModeValue('gray.200', 'gray.900')}
     >
-      <Container maxW={'5xl'}>
+      <Container maxW={pid ? 'full' : 'container.lg'}>
         <Flex minH={'60px'} py={{ base: 2 }} px={{ base: 4 }} align={'center'}>
           <Flex flex={{ base: 1, md: 'auto' }} ml={{ base: -2 }} display={{ base: 'flex', md: 'none' }}>
             <IconButton
@@ -59,8 +64,8 @@ export default function WithSubnavigation() {
               <Logo />
             </Text>
 
-            <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
-              <DesktopNav />
+            <Flex display={{ base: 'none', md: 'flex' }} ml={4}>
+              {pid ? <ProblemList /> : <DesktopNav />}
             </Flex>
           </Flex>
 

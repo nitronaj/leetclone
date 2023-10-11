@@ -22,7 +22,7 @@ import { Problem, problems } from '@/mockProblems/problems';
 
 import YouTubeModal from '../Modals/YouTube';
 
-const difficultyColors: Record<string, string> = {
+export const difficultyColors: Record<string, string> = {
   Easy: 'green.500',
   Medium: 'yellow.500',
   Hard: 'red.500',
@@ -37,7 +37,7 @@ export default function Problems() {
     onOpen();
   };
 
-  const ProblemList = problems.map((problem: Problem) => {
+  const ProblemList = problems.map((problem: Problem, index) => {
     const difficultyColor = difficultyColors[problem.difficulty];
     return (
       <Tr key={problem.id}>
@@ -45,8 +45,8 @@ export default function Problems() {
           <CheckIcon color={'green.500'} />
         </Td>
         <Td>
-          <Link as={NextLink} href={`problem/${problem.id}`}>
-            {problem.title}
+          <Link as={NextLink} href={`problems/${problem.id}`}>
+            {index + 1}. {problem.title}
           </Link>
         </Td>
         <Td color={difficultyColor}>{problem.difficulty}</Td>
