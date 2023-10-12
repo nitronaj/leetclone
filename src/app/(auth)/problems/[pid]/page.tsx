@@ -1,9 +1,9 @@
 'use client';
 
-import { Container, Heading, Text } from '@chakra-ui/react';
+import { Container, Heading } from '@chakra-ui/react';
 import { useParams } from 'next/navigation';
 
-type ProblemPageProps = {};
+// type ProblemPageProps = {};
 
 export default function ProblemPageProps() {
   const { pid } = useParams();

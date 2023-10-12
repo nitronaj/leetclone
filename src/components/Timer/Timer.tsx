@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { RepeatClockIcon, RepeatIcon, TimeIcon } from '@chakra-ui/icons';
-import { Box, Fade, Flex, IconButton, ScaleFade, useBoolean } from '@chakra-ui/react';
+import { RepeatClockIcon, RepeatIcon } from '@chakra-ui/icons';
+import { Box, Flex, IconButton, useBoolean } from '@chakra-ui/react';
 
 import { formatTime } from '@/utils/formatTime';
 
@@ -26,32 +26,24 @@ const Timer = () => {
   }, [showTimer]);
 
   return (
-    <>
-      <Flex alignItems={'center'} as="button">
-        <IconButton
-          aria-label="Start Timer"
-          variant={'ghost'}
-          icon={<RepeatClockIcon />}
-          colorScheme={time > 0 || showTimer ? 'twitter' : 'gray'}
-          size={'sm'}
-          onClick={setShowTimer.toggle}
-        />
-        {showTimer && (
-          <Box w={'62px'} textAlign={'left'} fontSize={'sm'}>
-            {formatTime(time)}
-          </Box>
-        )}
-        {showTimer && (
-          <IconButton
-            aria-label="Stop Timer"
-            variant={'ghost'}
-            icon={<RepeatIcon />}
-            size={'sm'}
-            onClick={resetTimer}
-          />
-        )}
-      </Flex>
-    </>
+    <Flex alignItems={'center'}>
+      <IconButton
+        aria-label="Start Timer"
+        variant={'ghost'}
+        icon={<RepeatClockIcon />}
+        colorScheme={time > 0 || showTimer ? 'twitter' : 'gray'}
+        size={'sm'}
+        onClick={setShowTimer.toggle}
+      />
+      {showTimer && (
+        <Box w={'62px'} textAlign={'left'} fontSize={'sm'}>
+          {formatTime(time)}
+        </Box>
+      )}
+      {showTimer && (
+        <IconButton aria-label="Stop Timer" variant={'ghost'} icon={<RepeatIcon />} size={'sm'} onClick={resetTimer} />
+      )}
+    </Flex>
   );
 };
 
