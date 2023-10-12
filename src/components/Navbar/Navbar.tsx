@@ -24,6 +24,8 @@ import { useParams } from 'next/navigation';
 
 import { auth } from '@/firebase/firebase';
 
+import Timer from '../Timer/Timer';
+
 import Logo from './Logo';
 import ProblemList from './ProblemList';
 import UserMenu from './UserAvatar';
@@ -68,6 +70,13 @@ export default function WithSubnavigation() {
               {pid ? <ProblemList /> : <DesktopNav />}
             </Flex>
           </Flex>
+
+          {/* mid */}
+          {pid && (
+            <Flex flex={{ base: 1 }}>
+              <Timer />
+            </Flex>
+          )}
 
           {/* Right Side */}
           <Stack flex={{ base: 1, md: 0 }} justify={'flex-end'} direction={'row'} spacing={0} alignItems={'center'}>

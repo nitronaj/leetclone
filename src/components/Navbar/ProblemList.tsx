@@ -37,7 +37,7 @@ const ProblemList: React.FC<ProblemListProps> = () => {
   const router = useRouter();
   const { pid } = useParams();
   const borderColor = useColorModeValue('gray.200', 'gray.900');
-  const hoverColor = useColorModeValue('gray.200', 'gray.600');
+  const hoverColor = useColorModeValue('gray.200', 'gray.500');
 
   const selectedProblemColor = useColorModeValue('messenger.400', 'messenger.200');
 
@@ -65,7 +65,7 @@ const ProblemList: React.FC<ProblemListProps> = () => {
         <Flex px={4} h={'52px'} alignItems={'center'} onClick={handleClick(problem.id)}>
           <CheckIcon color={'green.500'} boxSize={3} mr={2} />
 
-          <Text fontWeight={500} color={pid === problem.id && selectedProblemColor}>
+          <Text fontWeight={500} color={pid === problem.id ? selectedProblemColor : ''}>
             {index + 1}. {problem.title}
           </Text>
 
