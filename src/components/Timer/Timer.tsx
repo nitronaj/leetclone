@@ -6,24 +6,26 @@ import { formatTime } from '@/utils/formatTime';
 
 const Timer = () => {
   const [showTimer, setShowTimer] = useBoolean(false);
+  const [startTimer, setStartTimer] = useBoolean(false);
   const [time, setTime] = useState(0);
 
   const resetTimer = () => {
     setShowTimer.off();
+    setStartTimer.off();
     setTime(0);
   };
 
   useEffect(() => {
     let intervalId: NodeJS.Timeout;
 
-    if (showTimer) {
+    if (startTimer) {
       intervalId = setInterval(() => {
         setTime((prevTime) => prevTime + 1);
       }, 1000);
     }
 
     return () => clearInterval(intervalId);
-  }, [showTimer]);
+  }, [startTimer]);
 
   return (
     <Flex alignItems={'center'}>
@@ -33,7 +35,10 @@ const Timer = () => {
         icon={<RepeatClockIcon />}
         colorScheme={time > 0 || showTimer ? 'twitter' : 'gray'}
         size={'sm'}
-        onClick={setShowTimer.toggle}
+        onClick={() => {
+          setShowTimer.toggle();
+          setStartTimer.on();
+        }}
       />
       {showTimer && (
         <Box w={'62px'} textAlign={'left'} fontSize={'sm'}>

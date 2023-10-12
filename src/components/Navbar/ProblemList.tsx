@@ -20,6 +20,7 @@ import {
   Spacer,
   Stack,
   Text,
+  Tooltip,
   useColorModeValue,
   useDisclosure,
 } from '@chakra-ui/react';
@@ -81,13 +82,17 @@ const ProblemList: React.FC<ProblemListProps> = () => {
   return (
     <>
       <Box>
-        <HStack>
+        <HStack spacing={1}>
           <Button size={'sm'} variant={'ghost'} onClick={onOpen}>
             <Icon as={AiOutlineMenuUnfold} boxSize={5} />
             <Text ml={2}>Problem List</Text>
           </Button>
-          <IconButton aria-label="Prev Problem" icon={<FaChevronLeft />} size={'sm'} variant={'ghost'} />
-          <IconButton aria-label="Next Problem" icon={<FaChevronRight />} size={'sm'} variant={'ghost'} />
+          <Tooltip label="Prev Question" size={'sm'}>
+            <IconButton aria-label="Prev Problem" icon={<FaChevronLeft />} size={'sm'} variant={'ghost'} />
+          </Tooltip>
+          <Tooltip label="Next Question" size={'sm'}>
+            <IconButton aria-label="Next Problem" icon={<FaChevronRight />} size={'sm'} variant={'ghost'} />
+          </Tooltip>
         </HStack>
       </Box>
 

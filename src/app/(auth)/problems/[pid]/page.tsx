@@ -1,17 +1,19 @@
 'use client';
 
-import { Container, Heading } from '@chakra-ui/react';
+import { Box } from '@chakra-ui/react';
 import { useParams } from 'next/navigation';
 
-// type ProblemPageProps = {};
+import Workspace from '@/components/Workspace/Workspace';
 
-export default function ProblemPageProps() {
+type ProblemPageProps = {};
+
+const ProblemPage: React.FC<ProblemPageProps> = () => {
   const { pid } = useParams();
   return (
-    <Container maxW={'5xl'} textAlign={'center'}>
-      <Heading fontWeight={600} lineHeight={'110%'} py={{ base: 8, md: 12 }}>
-        {pid}
-      </Heading>
-    </Container>
+    <Box bgColor={'gray.200'} height={'full'} overflow={'hidden'}>
+      <Workspace />
+    </Box>
   );
-}
+};
+
+export default ProblemPage;
