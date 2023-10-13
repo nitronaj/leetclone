@@ -39,13 +39,7 @@ export default function WithSubnavigation() {
   const { pid } = params;
 
   return (
-    <Box
-      bg={useColorModeValue('white', 'gray.800')}
-      color={useColorModeValue('gray.600', 'white')}
-      borderBottom={1}
-      borderStyle={'solid'}
-      borderColor={useColorModeValue('gray.200', 'gray.900')}
-    >
+    <Box borderBottom={1} borderStyle={'solid'} borderColor={useColorModeValue('gray.200', 'gray.900')}>
       <Container maxW={pid ? 'full' : 'container.lg'}>
         <Flex minH={'60px'} py={{ base: 2 }} px={{ base: 4 }} align={'center'}>
           <Flex flex={{ base: 1, md: 'auto' }} ml={{ base: -2 }} display={{ base: 'flex', md: 'none' }}>

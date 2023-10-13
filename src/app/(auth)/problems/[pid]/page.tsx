@@ -1,18 +1,18 @@
 'use client';
 
-import { Box } from '@chakra-ui/react';
-import { useParams } from 'next/navigation';
+import { Stack } from '@chakra-ui/react';
 
 import Workspace from '@/components/Workspace/Workspace';
+
+const NavbarHeight = 3.75; // 61px 60/16 = 3.75rem;
 
 type ProblemPageProps = {};
 
 const ProblemPage: React.FC<ProblemPageProps> = () => {
-  const { pid } = useParams();
   return (
-    <Box bgColor={'gray.200'} height={'full'} overflow={'hidden'}>
+    <Stack overflow={'auto'} spacing={0} h={`calc(100vh - ${NavbarHeight}rem)`}>
       <Workspace />
-    </Box>
+    </Stack>
   );
 };
 

@@ -22,5 +22,12 @@ export default extendTheme(
   withDefaultColorScheme({
     colorScheme: 'purple',
     components: ['Spinner'],
-  })
+  }),
+  {
+    colors: {
+      gray: {
+        20: '#f0f0f0',
+      },
+    },
+  }
 );
