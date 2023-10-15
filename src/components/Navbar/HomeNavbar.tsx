@@ -24,6 +24,7 @@ import { useSetRecoilState } from 'recoil';
 import { authModalState, AuthModalType } from '@/atoms/authModelAtom';
 
 import Logo from './Logo';
+import { NavbarHeight } from './Navbar';
 
 export default function WithSubnavigation() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -45,9 +46,11 @@ export default function WithSubnavigation() {
       borderBottom={1}
       borderStyle={'solid'}
       borderColor={useColorModeValue('gray.200', 'gray.900')}
+      h={`${NavbarHeight}px`}
+      boxSizing={'border-box'}
     >
       <Container maxW={'5xl'}>
-        <Flex minH={'60px'} py={{ base: 2 }} px={{ base: 4 }} align={'center'}>
+        <Flex py={{ base: 2 }} px={{ base: 4 }} align={'center'}>
           <Flex flex={{ base: 1, md: 'auto' }} ml={{ base: -2 }} display={{ base: 'flex', md: 'none' }}>
             <IconButton
               onClick={onToggle}

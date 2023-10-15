@@ -30,6 +30,8 @@ import Logo from './Logo';
 import ProblemList from './ProblemList';
 import UserMenu from './UserAvatar';
 
+export const NavbarHeight = 56;
+
 export default function WithSubnavigation() {
   const params = useParams();
   const { colorMode, toggleColorMode } = useColorMode();
@@ -39,9 +41,15 @@ export default function WithSubnavigation() {
   const { pid } = params;
 
   return (
-    <Box borderBottom={1} borderStyle={'solid'} borderColor={useColorModeValue('gray.200', 'gray.900')}>
+    <Box
+      borderBottom={1}
+      borderStyle={'solid'}
+      borderColor={useColorModeValue('gray.200', 'gray.900')}
+      h={`${NavbarHeight}px`}
+      boxSizing={'border-box'}
+    >
       <Container maxW={pid ? 'full' : 'container.lg'}>
-        <Flex minH={'60px'} py={{ base: 2 }} px={{ base: 4 }} align={'center'}>
+        <Flex py={{ base: 2 }} px={{ base: 4 }} align={'center'}>
           <Flex flex={{ base: 1, md: 'auto' }} ml={{ base: -2 }} display={{ base: 'flex', md: 'none' }}>
             <IconButton
               onClick={onToggle}

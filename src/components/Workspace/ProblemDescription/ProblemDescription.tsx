@@ -21,7 +21,7 @@ const ProblemDescription: React.FC<ProblemDescriptionProps> = () => {
           borderWidth={1}
           borderStyle={'solid'}
           borderBottomRadius={8}
-          h={`calc(100vh - 8.3rem)`}
+          h={`calc(100vh - 8.1rem)`}
           overflow={'hidden'}
         >
           <TabPanel h={'full'} overflow={'auto'}>
@@ -69,7 +69,7 @@ const ProblemDescription: React.FC<ProblemDescriptionProps> = () => {
               <p>
                 <strong>Constraints:</strong>
               </p>
-              <ul>
+              <ul className="ps-8">
                 <li>
                   <code>
                     2 &lt;= nums.length &lt;= 10<sup>4</sup>
