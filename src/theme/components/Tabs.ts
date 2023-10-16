@@ -20,8 +20,6 @@ const workspaceVariant = definePartsStyle((props) => {
         borderColor: 'inherit',
         borderBottom: 'none',
         mb: '-2px',
-        fontSize: 'sm',
-        fontWeight: 'semibold',
       },
     },
     tablist: {

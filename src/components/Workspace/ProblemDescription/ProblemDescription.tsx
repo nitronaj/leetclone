@@ -1,8 +1,10 @@
 import React from 'react';
-import { Box, Code, Heading, Tab, TabList, TabPanel, TabPanels, Tabs, useColorModeValue } from '@chakra-ui/react';
+import { Box, Code, Heading, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
 import { useParams } from 'next/navigation';
 
 import { problems } from '@/mockProblems/problems';
+
+import ProblemToolbar from './ProblemToolbar';
 
 interface ProblemDescriptionProps {}
 
@@ -15,14 +17,16 @@ const ProblemDescription: React.FC<ProblemDescriptionProps> = () => {
     <Box marginInlineEnd={1} marginBlockStart={4}>
       <Tabs variant="workspace" colorScheme="whiteAlpha">
         <TabList>
-          <Tab>Description</Tab>
+          <Tab fontSize={'smaller'} fontWeight={'semibold'}>
+            Description
+          </Tab>
         </TabList>
         <TabPanels h={`calc(100vh - 8.1rem)`} overflow={'hidden'}>
           <TabPanel h={'full'} overflow={'auto'}>
-            <Heading as="h2" size="md">
-              {problem?.title}
+            <Heading as="h2" size="sm">
+              1. {problem?.title}
             </Heading>
-            <p>one!</p>
+            <ProblemToolbar />
             <div data-track-load="description_content">
               <p>
                 Given an array of integers <code>nums</code>&nbsp;and an integer <code>target</code>, return{' '}
