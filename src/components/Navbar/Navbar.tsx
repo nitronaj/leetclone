@@ -4,7 +4,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { ChevronDownIcon, ChevronRightIcon, CloseIcon, HamburgerIcon, MoonIcon, SunIcon } from '@chakra-ui/icons';
 import {
   Box,
-  Button,
   Collapse,
   Container,
   Flex,
@@ -84,10 +83,14 @@ export default function WithSubnavigation() {
           )}
 
           {/* Right Side */}
-          <Stack flex={{ base: 1, md: 0 }} justify={'flex-end'} direction={'row'} spacing={0} alignItems={'center'}>
-            <Button onClick={toggleColorMode} variant={'ghost'}>
-              {colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
-            </Button>
+          <Stack flex={{ base: 1, md: 0 }} justify={'flex-end'} direction={'row'} spacing={1} alignItems={'center'}>
+            <IconButton
+              onClick={toggleColorMode}
+              variant={'ghost'}
+              aria-label="Color Mode"
+              icon={colorMode === 'light' ? <MoonIcon /> : <SunIcon />}
+              fontSize={'lg'}
+            />
             <UserMenu user={user} />
           </Stack>
         </Flex>

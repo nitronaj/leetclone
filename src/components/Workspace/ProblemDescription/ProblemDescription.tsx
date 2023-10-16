@@ -14,7 +14,7 @@ const ProblemDescription: React.FC<ProblemDescriptionProps> = () => {
   const problem = problems.find((p) => p.id === pid);
 
   return (
-    <Box marginInlineEnd={1} marginBlockStart={4}>
+    <Box marginBlockStart={4}>
       <Tabs variant="workspace" colorScheme="whiteAlpha">
         <TabList>
           <Tab fontSize={'smaller'} fontWeight={'semibold'}>
