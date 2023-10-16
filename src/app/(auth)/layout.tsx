@@ -8,7 +8,7 @@ import Navbar from '@/components/Navbar/Navbar';
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   const { pid } = useParams();
 
-  const bgColor = useColorModeValue(pid ? 'white' : 'white', 'gray.800');
+  const bgColor = useColorModeValue(pid ? 'gray.20' : 'white', 'gray.800');
 
   return (
     <Stack spacing={0} bgColor={bgColor}>

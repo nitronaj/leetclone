@@ -37,6 +37,8 @@ export default function WithSubnavigation() {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onToggle } = useDisclosure();
   const [user] = useAuthState(auth);
+  const bgColor = useColorModeValue('white', 'gray.800');
+  const borderColor = useColorModeValue('gray.200', 'gray.900');
 
   const { pid } = params;
 
@@ -44,7 +46,8 @@ export default function WithSubnavigation() {
     <Box
       borderBottom={1}
       borderStyle={'solid'}
-      borderColor={useColorModeValue('gray.200', 'gray.900')}
+      borderColor={borderColor}
+      bgColor={bgColor}
       h={`${NavbarHeight}px`}
       boxSizing={'border-box'}
     >

@@ -8,8 +8,8 @@ interface WorkspaceProps {}
 
 const Workspace: React.FC<WorkspaceProps> = () => {
   return (
-    <Box w={'auto'} m={4} h={'full'}>
-      <Split className="split" minSize={1}>
+    <Box w={'auto'} marginInline={4} h={'full'}>
+      <Split className="split" minSize={0}>
         <ProblemDescription />
         <div>right</div>
       </Split>

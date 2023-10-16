@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Code, Heading, Tab, TabList, TabPanel, TabPanels, Tabs } from '@chakra-ui/react';
+import { Box, Code, Heading, Tab, TabList, TabPanel, TabPanels, Tabs, useColorModeValue } from '@chakra-ui/react';
 import { useParams } from 'next/navigation';
 
 import { problems } from '@/mockProblems/problems';
@@ -12,18 +12,12 @@ const ProblemDescription: React.FC<ProblemDescriptionProps> = () => {
   const problem = problems.find((p) => p.id === pid);
 
   return (
-    <Box marginInlineEnd={1}>
-      <Tabs variant="enclosed">
+    <Box marginInlineEnd={1} marginBlockStart={4}>
+      <Tabs variant="workspace" colorScheme="whiteAlpha">
         <TabList>
           <Tab>Description</Tab>
         </TabList>
-        <TabPanels
-          borderWidth={1}
-          borderStyle={'solid'}
-          borderBottomRadius={8}
-          h={`calc(100vh - 8.1rem)`}
-          overflow={'hidden'}
-        >
+        <TabPanels h={`calc(100vh - 8.1rem)`} overflow={'hidden'}>
           <TabPanel h={'full'} overflow={'auto'}>
             <Heading as="h2" size="md">
               {problem?.title}

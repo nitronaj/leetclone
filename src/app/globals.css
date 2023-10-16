@@ -23,7 +23,6 @@
 }
 
 .gutter {
-  background-color: #eee;
   background-repeat: no-repeat;
   background-position: 50%;
   height: 100%;
@@ -31,5 +30,26 @@
 
 .gutter.gutter-horizontal {
   background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAeCAYAAADkftS9AAAAIklEQVQoU2M4c+bMfxAGAgYYmwGrIIiDjrELjpo5aiZeMwF+yNnOs5KSvgAAAABJRU5ErkJggg==');
-  cursor: col-resize;
+  cursor: ew-resize;
+  width: 5px !important;
+}
+
+.gutter.gutter-horizontal:hover {
+  background-image: none;
+}
+
+.gutter.gutter-horizontal:hover::after {
+  position: relative;
+  display: block;
+  border-radius: 2px;
+  content: '';
+  height: 2px;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+}
+
+.gutter.gutter-horizontal:hover::after {
+  background-color: var(--chakra-colors-blue-60);
+  height: 100%;
 }

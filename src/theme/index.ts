@@ -1,6 +1,8 @@
 // // theme/index.js
 import { extendTheme, withDefaultColorScheme } from '@chakra-ui/react';
 
+import { tabsTheme } from './components/Tabs';
+
 // // Component style overrides
 // import Button from './components/button';
 // // Foundational style overrides
@@ -28,6 +30,12 @@ export default extendTheme(
       gray: {
         20: '#f0f0f0',
       },
+      blue: {
+        60: '#007aff',
+      },
+    },
+    components: {
+      Tabs: tabsTheme,
     },
   }
 );
