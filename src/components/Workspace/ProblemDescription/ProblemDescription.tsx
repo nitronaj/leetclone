@@ -21,7 +21,7 @@ const ProblemDescription: React.FC<ProblemDescriptionProps> = () => {
             Description
           </Tab>
         </TabList>
-        <TabPanels h={`calc(100vh - 8.1rem)`} overflow={'hidden'}>
+        <TabPanels h={`calc(100vh - 7.5rem)`} overflow={'hidden'}>
           <TabPanel h={'full'} overflow={'auto'}>
             <Heading as="h2" size="sm">
               1. {problem?.title}

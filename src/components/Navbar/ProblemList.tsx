@@ -87,10 +87,10 @@ const ProblemList: React.FC<ProblemListProps> = () => {
             <Icon as={AiOutlineMenuUnfold} boxSize={5} />
             <Text ml={2}>Problem List</Text>
           </Button>
-          <Tooltip label="Prev Question" size={'sm'}>
+          <Tooltip label="Prev Question" fontSize={'xs'}>
             <IconButton aria-label="Prev Problem" icon={<FaChevronLeft />} size={'sm'} variant={'ghost'} />
           </Tooltip>
-          <Tooltip label="Next Question" size={'sm'}>
+          <Tooltip label="Next Question" fontSize={'xs'}>
             <IconButton aria-label="Next Problem" icon={<FaChevronRight />} size={'sm'} variant={'ghost'} />
           </Tooltip>
         </HStack>

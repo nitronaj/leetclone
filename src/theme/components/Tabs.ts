@@ -13,6 +13,7 @@ const workspaceVariant = definePartsStyle((props) => {
       border: '1px solid',
       // use colorScheme to change background color with dark and light mode options
       bg: mode(`${c}.300`, `${c}.600`)(props),
+      height: '34px',
       borderTopRadius: 'lg',
       borderBottom: 'none',
       _selected: {

@@ -28,6 +28,7 @@ export default extendTheme(
   {
     colors: {
       gray: {
+        10: '#fAfAfA',
         20: '#f0f0f0',
       },
       blue: {

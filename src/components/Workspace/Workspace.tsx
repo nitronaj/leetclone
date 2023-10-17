@@ -2,6 +2,7 @@ import React from 'react';
 import Split from 'react-split';
 import { Box } from '@chakra-ui/react';
 
+import Playground from './Playground/Playground';
 import ProblemDescription from './ProblemDescription/ProblemDescription';
 
 interface WorkspaceProps {}
@@ -9,9 +10,9 @@ interface WorkspaceProps {}
 const Workspace: React.FC<WorkspaceProps> = () => {
   return (
     <Box w={'auto'} marginInline={4} h={'full'}>
-      <Split className="split" minSize={0}>
+      <Split className="split split-horizontal" minSize={0}>
         <ProblemDescription />
-        <div>right</div>
+        <Playground />
       </Split>
     </Box>
   );

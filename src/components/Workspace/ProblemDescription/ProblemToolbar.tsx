@@ -2,7 +2,7 @@ import React from 'react';
 import { AiFillDislike, AiFillLike, AiFillStar } from 'react-icons/ai';
 import { TiStarOutline } from 'react-icons/ti';
 import { CheckCircleIcon } from '@chakra-ui/icons';
-import { Badge, Button, IconButton, Stack, Text, useColorModeValue } from '@chakra-ui/react';
+import { Badge, Button, IconButton, Stack, Text, Tooltip, useColorModeValue } from '@chakra-ui/react';
 import { useParams } from 'next/navigation';
 
 import { problems } from '@/mockProblems/problems';
@@ -29,14 +29,16 @@ const ProblemToolbar = () => {
         </Text>
       </Button>
 
-      <IconButton
-        aria-label="Fav Problem"
-        icon={<AiFillStar />}
-        variant="ghost"
-        colorScheme="yellow"
-        size={'sm'}
-        fontSize={'lg'}
-      />
+      <Tooltip label="Fav Problem" fontSize={'xs'}>
+        <IconButton
+          aria-label="Fav Problem"
+          icon={<AiFillStar />}
+          variant="ghost"
+          colorScheme="yellow"
+          size={'sm'}
+          fontSize={'lg'}
+        />
+      </Tooltip>
 
       <IconButton
         aria-label="Fav Problem"
