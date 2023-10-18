@@ -34,6 +34,9 @@ export default extendTheme(
       blue: {
         60: '#007aff',
       },
+      eerie: {
+        800: '#1e1e1e',
+      },
     },
     components: {
       Tabs: tabsTheme,
