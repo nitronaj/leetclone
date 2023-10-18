@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import Split from 'react-split';
 import { Box } from '@chakra-ui/react';
