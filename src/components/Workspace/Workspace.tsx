@@ -10,7 +10,7 @@ interface WorkspaceProps {}
 
 const Workspace: React.FC<WorkspaceProps> = () => {
   return (
-    <Box w={'auto'} marginInline={4} h={'full'}>
+    <Box w={'auto'} marginInline={4} h={'full'} overflowX={'hidden'}>
       <Split className="split split-horizontal" minSize={0}>
         <ProblemDescription />
         <Playground />

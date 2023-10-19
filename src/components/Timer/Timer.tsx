@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { RepeatClockIcon, RepeatIcon } from '@chakra-ui/icons';
-import { Box, Flex, IconButton, useBoolean } from '@chakra-ui/react';
+import { Box, ButtonGroup, Flex, IconButton, useBoolean } from '@chakra-ui/react';
 
 import { formatTime } from '@/utils/formatTime';
 
@@ -28,10 +28,9 @@ const Timer = () => {
   }, [startTimer]);
 
   return (
-    <Flex alignItems={'center'}>
+    <ButtonGroup size="sm" isAttached variant="ghost" alignItems={'center'} spacing={1}>
       <IconButton
         aria-label="Start Timer"
-        variant={'ghost'}
         icon={<RepeatClockIcon />}
         colorScheme={time > 0 || showTimer ? 'twitter' : 'gray'}
         size={'sm'}
@@ -48,7 +47,7 @@ const Timer = () => {
       {showTimer && (
         <IconButton aria-label="Stop Timer" variant={'ghost'} icon={<RepeatIcon />} size={'sm'} onClick={resetTimer} />
       )}
-    </Flex>
+    </ButtonGroup>
   );
 };
 
