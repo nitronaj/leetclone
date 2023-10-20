@@ -29,7 +29,7 @@ import { useParams, useRouter } from 'next/navigation';
 
 import { Problem, problems } from '@/mockProblems/problems';
 
-import { difficultyColors } from '../Problems/Problems';
+import { difficultyColors } from '../../Problems/Problems';
 
 interface ProblemListProps {}
 

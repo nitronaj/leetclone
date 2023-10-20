@@ -25,8 +25,9 @@ import { auth } from '@/firebase/firebase';
 
 import Timer from '../Timer/Timer';
 
+import PlaygroundToolbar from './PlaygroundToolbar/PlaygroundToolbar';
+import ProblemList from './ProblemList/ProblemList';
 import Logo from './Logo';
-import ProblemList from './ProblemList';
 import UserMenu from './UserAvatar';
 
 export const NavbarHeight = 56;
@@ -79,6 +80,7 @@ export default function WithSubnavigation() {
           {pid && (
             <Flex flex={{ base: 1 }}>
               <Timer />
+              <PlaygroundToolbar />
             </Flex>
           )}
 
