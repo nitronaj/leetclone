@@ -1,7 +1,11 @@
 // // theme/index.js
 import { extendTheme, withDefaultColorScheme } from '@chakra-ui/react';
+import { withProse } from '@nikolovlazar/chakra-ui-prose';
 
 import { tabsTheme } from './components/Tabs';
+import code from './prose/code';
+import p from './prose/p';
+import pre from './prose/pre';
 
 // // Component style overrides
 // import Button from './components/button';
@@ -41,5 +45,14 @@ export default extendTheme(
     components: {
       Tabs: tabsTheme,
     },
-  }
+  },
+  withProse({
+    baseStyle: (props) => {
+      return {
+        code: code.baseStyle(props),
+        p: p.baseStyle,
+        pre: pre.baseStyle(props),
+      };
+    },
+  })
 );
