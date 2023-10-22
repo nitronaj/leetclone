@@ -1,6 +1,6 @@
 import { Box, Modal, ModalBody, ModalCloseButton, ModalContent, ModalHeader, ModalOverlay } from '@chakra-ui/react';
 
-import { problems } from '@/mockProblems/problems';
+import { mockProblems } from '@/mockProblems/problems';
 
 export type YouTubeModalProps = {
   id: string;
@@ -9,7 +9,7 @@ export type YouTubeModalProps = {
 };
 
 export default function YouTubeModal({ id, isOpen, onClose }: YouTubeModalProps) {
-  const { videoId = '', title = '' } = problems.find((p) => p.id === id) ?? {};
+  const { videoId = '', title = '' } = mockProblems.find((p) => p.id === id) ?? {};
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} size={'3xl'}>

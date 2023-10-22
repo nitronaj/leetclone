@@ -18,7 +18,7 @@ import {
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
-import { Problem as MockProblem, problems as mockProblems } from '@/mockProblems/problems';
+import { MockProblem, mockProblems } from '@/mockProblems/problems';
 import { problems } from '@/utils/problems';
 import { Problem } from '@/utils/types/problem';
 

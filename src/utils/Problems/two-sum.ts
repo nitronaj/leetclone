@@ -30,6 +30,7 @@ var twoSum = function(nums, target) {
 };`;
 
 // check if the user has the correct code
+// eslint-disable-next-line no-unused-vars
 function handlerTwoSum(fn: (arg0: number[], arg1: number) => any) {
   try {
     const nums = [

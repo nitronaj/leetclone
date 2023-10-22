@@ -1,4 +1,4 @@
-export type Problem = {
+export type MockProblem = {
   id: string;
   title: string;
   difficulty: string;
@@ -7,7 +7,7 @@ export type Problem = {
   videoId?: string;
 };
 
-export const problems: Problem[] = [
+export const mockProblems: MockProblem[] = [
   {
     id: 'two-sum',
     title: 'Two Sum',

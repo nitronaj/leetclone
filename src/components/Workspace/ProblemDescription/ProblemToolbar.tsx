@@ -6,7 +6,7 @@ import { TiStarOutline } from 'react-icons/ti';
 import { CheckCircleIcon } from '@chakra-ui/icons';
 import { Badge, Button, IconButton, Stack, Text, Tooltip, useColorModeValue } from '@chakra-ui/react';
 
-import { problems } from '@/mockProblems/problems';
+import { mockProblems } from '@/mockProblems/problems';
 import { Problem } from '@/utils/types/problem';
 
 interface ProblemToolbarProps {
@@ -14,7 +14,7 @@ interface ProblemToolbarProps {
 }
 
 const ProblemToolbar: React.FC<ProblemToolbarProps> = ({ problem }) => {
-  const mockProblem = problems.find((p) => p.id === problem.id);
+  const mockProblem = mockProblems.find((p) => p.id === problem.id);
   return (
     <Stack direction="row" my={3} alignItems={'center'}>
       <Badge colorScheme="green" borderRadius={10} px={1.5} py={1} fontSize={'x-small'}>

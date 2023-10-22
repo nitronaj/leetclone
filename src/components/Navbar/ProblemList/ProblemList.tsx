@@ -27,7 +27,7 @@ import {
 import NextLink from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 
-import { Problem, problems } from '@/mockProblems/problems';
+import { MockProblem, mockProblems } from '@/mockProblems/problems';
 
 import { difficultyColors } from '../../Problems/Problems';
 
@@ -47,7 +47,7 @@ const ProblemList: React.FC<ProblemListProps> = () => {
     router.push(`/problems/${pid}`);
   };
 
-  const ProblemList = problems.map((problem: Problem, index) => {
+  const ProblemList = mockProblems.map((problem: MockProblem, index) => {
     const difficultyColor = difficultyColors[problem.difficulty];
 
     return (
