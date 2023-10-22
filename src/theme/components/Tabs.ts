@@ -7,7 +7,6 @@ const { definePartsStyle, defineMultiStyleConfig } = createMultiStyleConfigHelpe
 // define a custom variant
 const workspaceVariant = definePartsStyle((props) => {
   const { colorScheme: c } = props; // extract colorScheme from component props
-  console.log('Tabs', props);
   return {
     tab: {
       border: '1px solid',

@@ -15,13 +15,21 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 
+import { Problem } from '@/utils/types/problem';
+
 import CodeMirrorEditor from './CodeMirrorEditor/CodeMirrorEditor';
 import PreferenceNav from './PreferenceNav/PreferenceNav';
 
-const Playground = () => {
+interface PlaygroundProps {
+  problem: Problem;
+}
+
+const Playground: React.FC<PlaygroundProps> = ({ problem }) => {
   const color = useColorModeValue('gray.800', 'white.900');
   const bgColor = useColorModeValue('white', 'gray.800');
   const bgColorEditor = useColorModeValue('white', 'eerie.800');
+
+  const starterCode = problem.starterCode;
 
   return (
     <Stack marginBlockStart={4} spacing={0}>
@@ -34,9 +42,9 @@ const Playground = () => {
             borderRadius={'lg'}
             bgColor={bgColorEditor}
             position={'relative'}
-            overflow={'hidden'}
+            overflow={'auto'}
           >
-            <CodeMirrorEditor />
+            <CodeMirrorEditor value={starterCode} />
             {/* <MonacoEditor value={tmpCode} /> */}
           </Box>
           <Box border={'1px solid '} borderColor={'inherit'} borderRadius={'lg'} bgColor={bgColor} overflow={'auto'}>

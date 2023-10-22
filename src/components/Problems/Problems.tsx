@@ -18,7 +18,9 @@ import {
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
-import { Problem, problems } from '@/mockProblems/problems';
+import { Problem as MockProblem, problems as mockProblems } from '@/mockProblems/problems';
+import { problems } from '@/utils/problems';
+import { Problem } from '@/utils/types/problem';
 
 import YouTubeModal from '../Modals/YouTube';
 
@@ -37,8 +39,9 @@ export default function Problems() {
     onOpen();
   };
 
-  const ProblemList = problems.map((problem: Problem, index) => {
-    const difficultyColor = difficultyColors[problem.difficulty];
+  const ProblemList = Object.values(problems).map((problem: Problem, index) => {
+    const mockProblem = mockProblems.find((p: MockProblem) => p.id === problem.id);
+    const difficultyColor = difficultyColors[mockProblem?.difficulty || 'Easy'];
     return (
       <Tr key={problem.id}>
         <Td textAlign={'center'}>
@@ -49,10 +52,10 @@ export default function Problems() {
             {index + 1}. {problem.title}
           </Link>
         </Td>
-        <Td color={difficultyColor}>{problem.difficulty}</Td>
-        <Td>{problem.category}</Td>
+        <Td color={difficultyColor}>{mockProblem?.difficulty}</Td>
+        <Td>{mockProblem?.category}</Td>
         <Td>
-          {problem.videoId ? (
+          {mockProblem?.videoId ? (
             <Icon
               as={AiFillYoutube}
               fontSize={'2xl'}

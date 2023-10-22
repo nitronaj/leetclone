@@ -1,16 +1,24 @@
-'use client';
-
 import { Stack } from '@chakra-ui/react';
 
-import { NavbarHeight } from '@/components/Navbar/Navbar';
 import Workspace from '@/components/Workspace/Workspace';
+import { NavbarHeight } from '@/utils/constants';
+import { problems } from '@/utils/problems';
 
-type ProblemPageProps = {};
+type ProblemPageProps = {
+  params: { pid: string };
+};
 
-const ProblemPage: React.FC<ProblemPageProps> = () => {
+// Return a list of `params` to populate the [pid] dynamic segment
+export async function generateStaticParams() {
+  return Object.keys(problems).map((key) => ({
+    pid: key,
+  }));
+}
+
+const ProblemPage: React.FC<ProblemPageProps> = ({ params: { pid } }) => {
   return (
     <Stack overflow={'auto'} spacing={0} h={`calc(100vh - ${NavbarHeight}px)`}>
-      <Workspace />
+      <Workspace pid={pid} />
     </Stack>
   );
 };

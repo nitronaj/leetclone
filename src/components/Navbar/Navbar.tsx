@@ -22,6 +22,7 @@ import {
 import { useParams } from 'next/navigation';
 
 import { auth } from '@/firebase/firebase';
+import { NavbarHeight } from '@/utils/constants';
 
 import Timer from '../Timer/Timer';
 
@@ -29,8 +30,6 @@ import PlaygroundToolbar from './PlaygroundToolbar/PlaygroundToolbar';
 import ProblemList from './ProblemList/ProblemList';
 import Logo from './Logo';
 import UserMenu from './UserAvatar';
-
-export const NavbarHeight = 56;
 
 export default function WithSubnavigation() {
   const params = useParams();

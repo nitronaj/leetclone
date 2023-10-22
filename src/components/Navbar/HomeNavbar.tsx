@@ -22,9 +22,9 @@ import {
 import { useSetRecoilState } from 'recoil';
 
 import { authModalState, AuthModalType } from '@/atoms/authModelAtom';
+import { NavbarHeight } from '@/utils/constants';
 
 import Logo from './Logo';
-import { NavbarHeight } from './Navbar';
 
 export default function WithSubnavigation() {
   const { colorMode, toggleColorMode } = useColorMode();
