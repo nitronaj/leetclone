@@ -6,7 +6,7 @@ export interface Example {
   img?: string;
 }
 
-type Callback<I, O, TResult> = (_input: I, _output: O) => TResult;
+// type Callback<I, O, TResult> = (_input: I, _output: O) => TResult;
 
 export interface Problem {
   id: string;
@@ -16,6 +16,7 @@ export interface Problem {
   constraints: string | string[];
   order: number;
   starterCode: string;
-  handlerFunction: ((_callback: Callback) => boolean) | string;
+  // eslint-disable-next-line no-unused-vars
+  handlerFunction: ((_callback: <I, O, TResult>(_input: I, _output: O) => TResult) => boolean) | string;
   starterFunctionName: string;
 }
