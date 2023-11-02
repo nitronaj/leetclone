@@ -4,7 +4,7 @@ import Head from 'next/head';
 
 import { Providers } from './providers';
 
-import './globals.css';
+import '../styles/globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 

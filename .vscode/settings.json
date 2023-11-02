@@ -3,5 +3,5 @@
     "*.css": "tailwindcss"
   },
   "editor.formatOnSave": true,
-  "cSpell.words": ["leetclone"]
+  "cSpell.words": ["leetclone", "TRPC"]
 }

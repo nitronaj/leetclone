@@ -2,7 +2,7 @@ import React from 'react';
 import Split from 'react-split';
 import { Box, Stack } from '@chakra-ui/react';
 
-import { Problem } from '@/utils/types/problem';
+import { type Problem } from '@/utils/types/problem';
 
 import CodeEditor from './CodeEditor/CodeEditor';
 import PreferenceNav from './PreferenceNav/PreferenceNav';

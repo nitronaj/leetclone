@@ -14,7 +14,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 
-import { Problem } from '@/utils/types/problem';
+import { type Problem } from '@/utils/types/problem';
 
 interface TestCasesProps {
   problem: Problem;
