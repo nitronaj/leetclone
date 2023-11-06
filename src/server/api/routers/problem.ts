@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 import { createTRPCRouter, publicProcedure } from '@/server/api/trpc';
-import { problems } from '@/utils/problems';
+import { problems } from '@/app/lib/problems';
 
 export const problemRouter = createTRPCRouter({
   problemById: publicProcedure.input(z.string()).query(({ input }) => {

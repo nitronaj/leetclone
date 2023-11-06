@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { useSignOut } from 'react-firebase-hooks/auth';
 import { FiLogOut } from 'react-icons/fi';
 import { Avatar, Button, Center, Menu, MenuButton, MenuDivider, MenuItem, MenuList, Spinner } from '@chakra-ui/react';
-import { User } from 'firebase/auth';
+import { type User } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
 
 import { auth } from '@/firebase/firebase';
@@ -18,9 +18,9 @@ const UserMenu: React.FC<UserMenuProps> = ({ user }) => {
   const seed = useRef('');
   const { email = '' } = user ?? {};
 
-  const handleClick = () => {
+  const handleClick = async () => {
     try {
-      signOut();
+      await signOut();
       router.push('/');
     } catch (error) {
       alert(error);

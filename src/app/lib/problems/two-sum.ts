@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import { Problem } from '../types/problem';
+import { Problem } from '../../../utils/types/problem';
 
 const problemStatement = `<p>
 Given an array of integers <code>nums</code>&nbsp;and an integer <code>target</code>, return

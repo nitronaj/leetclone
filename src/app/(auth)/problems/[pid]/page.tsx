@@ -1,6 +1,6 @@
 import { Stack } from '@chakra-ui/react';
 
-import Workspace from '@/components/Workspace/Workspace';
+import Workspace from '@/app/ui/Workspace/Workspace';
 import { trcpHelper } from '@/trpc/helper';
 import { NavbarHeight } from '@/utils/constants';
 

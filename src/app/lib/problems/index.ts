@@ -1,4 +1,4 @@
-import { type Problem } from '../types/problem';
+import { type Problem } from '../../../utils/types/problem';
 
 import { jumpGame } from './jump-game';
 import { reverseLinkedList } from './reverse-linked-list';

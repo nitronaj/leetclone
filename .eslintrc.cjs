@@ -20,7 +20,7 @@ const config = {
         default: 'array-simple',
       },
     ],
-    '@typescript-eslint/consistent-type-definitions': 'warn',
+    '@typescript-eslint/consistent-type-definitions': ['warn', 'type'],
     '@typescript-eslint/consistent-type-imports': [
       'warn',
       {

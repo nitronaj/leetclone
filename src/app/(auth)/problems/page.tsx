@@ -1,6 +1,6 @@
 import { Container, Heading, Text } from '@chakra-ui/react';
 
-import Problems from '@/components/Problems/Problems';
+import Problems from '@/app/ui/Problems/Problems';
 
 export default function Home() {
   return (

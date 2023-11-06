@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { RepeatClockIcon, RepeatIcon } from '@chakra-ui/icons';
 import { Box, ButtonGroup, IconButton, useBoolean } from '@chakra-ui/react';
 
-import { formatTime } from '@/utils/formatTime/formatTime';
+import { formatTime } from '@/app/lib/formatTime/formatTime';
 
 const Timer = () => {
   const [showTimer, setShowTimer] = useBoolean(false);

@@ -4,7 +4,7 @@ import React from 'react';
 import Split from 'react-split';
 import { Box } from '@chakra-ui/react';
 
-import { problems } from '@/utils/problems';
+import { problems } from '@/app/lib/problems';
 
 import Playground from './Playground/Playground';
 import ProblemDescription from './ProblemDescription/ProblemDescription';

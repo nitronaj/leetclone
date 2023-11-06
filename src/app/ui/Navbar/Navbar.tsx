@@ -24,10 +24,9 @@ import { useParams } from 'next/navigation';
 import { auth } from '@/firebase/firebase';
 import { NavbarHeight } from '@/utils/constants';
 
-import Timer from '../Timer/Timer';
-
 import PlaygroundToolbar from './PlaygroundToolbar/PlaygroundToolbar';
 import ProblemList from './ProblemList/ProblemList';
+import Timer from './Timer/Timer';
 import Logo from './Logo';
 import UserMenu from './UserAvatar';
 
@@ -229,12 +228,11 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
           borderColor={useColorModeValue('gray.200', 'gray.700')}
           align={'start'}
         >
-          {children &&
-            children.map((child) => (
-              <Box as="a" key={child.label} py={2} href={child.href}>
-                {child.label}
-              </Box>
-            ))}
+          {children?.map((child) => (
+            <Box as="a" key={child.label} py={2} href={child.href}>
+              {child.label}
+            </Box>
+          ))}
         </Stack>
       </Collapse>
     </Stack>
@@ -244,11 +242,11 @@ const MobileNavItem = ({ label, children, href }: NavItem) => {
 interface NavItem {
   label: string;
   subLabel?: string;
-  children?: Array<NavItem>;
+  children?: NavItem[];
   href?: string;
 }
 
-const NAV_ITEMS: Array<NavItem> = [
+const NAV_ITEMS: NavItem[] = [
   {
     label: 'Problems',
     href: '/problems',

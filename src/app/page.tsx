@@ -4,11 +4,11 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import { Container, Stack } from '@chakra-ui/react';
 import { useRecoilValue } from 'recoil';
 
+import Hero from '@/app/ui/Hero/Hero';
+import AuthModal from '@/app/ui/Modals/AuthModal';
+import HomeNavbar from '@/app/ui/Navbar/HomeNavbar';
+import Navbar from '@/app/ui/Navbar/Navbar';
 import { authModalState } from '@/atoms/authModelAtom';
-import Hero from '@/components/Hero/Hero';
-import AuthModal from '@/components/Modals/AuthModal';
-import HomeNavbar from '@/components/Navbar/HomeNavbar';
-import Navbar from '@/components/Navbar/Navbar';
 import { auth } from '@/firebase/firebase';
 
 export default function Home() {

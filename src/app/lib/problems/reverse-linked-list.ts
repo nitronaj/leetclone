@@ -1,6 +1,6 @@
 import assert from 'assert';
 
-import { Problem } from '../types/problem';
+import { Problem } from '../../../utils/types/problem';
 
 import example from './images/reverseLL.jpg';
 

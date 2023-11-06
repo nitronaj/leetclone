@@ -27,7 +27,7 @@ import {
 import NextLink from 'next/link';
 import { useParams, useRouter } from 'next/navigation';
 
-import { MockProblem, mockProblems } from '@/mockProblems/problems';
+import { type MockProblem, mockProblems } from '@/mockProblems/problems';
 
 import { difficultyColors } from '../../Problems/Problems';
 

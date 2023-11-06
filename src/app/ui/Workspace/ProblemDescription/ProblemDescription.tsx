@@ -14,15 +14,15 @@ import {
 } from '@chakra-ui/react';
 import { Prose } from '@nikolovlazar/chakra-ui-prose';
 
-import { Pre } from '@/components/UI/Pre/Pre';
-import { ensureArray } from '@/utils/ensureArray/ensureArray';
-import { Example, Problem } from '@/utils/types/problem';
+import { ensureArray } from '@/app/lib/ensureArray/ensureArray';
+import { Pre } from '@/app/ui/shared/Pre/Pre';
+import { type Example, type Problem } from '@/utils/types/problem';
 
 import ProblemToolbar from './ProblemToolbar';
 
-interface ProblemDescriptionProps {
+type ProblemDescriptionProps = {
   problem: Problem;
-}
+};
 
 const Examples: React.FC<{ examples: Example[] }> = ({ examples }) => {
   return examples.map((example) => {

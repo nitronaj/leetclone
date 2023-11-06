@@ -6,7 +6,7 @@ import { TRPCReactProvider } from '@/trpc/react';
 
 import { Providers } from './providers';
 
-import '../styles/globals.css';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 

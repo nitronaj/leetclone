@@ -1,4 +1,4 @@
-import { problems } from '@/utils/problems';
+import { problems } from '@/app/lib/problems';
 
 export function GET() {
   const data = Object.values(problems);

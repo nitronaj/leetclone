@@ -8,9 +8,9 @@ import CodeEditor from './CodeEditor/CodeEditor';
 import PreferenceNav from './PreferenceNav/PreferenceNav';
 import TestCases from './TestCases/TestCases';
 
-interface PlaygroundProps {
+type PlaygroundProps = {
   problem: Problem;
-}
+};
 
 const Playground: React.FC<PlaygroundProps> = ({ problem }) => {
   return (

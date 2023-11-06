@@ -1,7 +1,7 @@
 import { Box, Button, Flex, Heading, Stack, Text } from '@chakra-ui/react';
 import Image from 'next/image';
 
-import heroImage from '../../../public/images/hero2.png';
+import heroImage from '@/../public/images/hero2.png';
 
 /* const Illustration = (props: IconProps) => {
   return (
