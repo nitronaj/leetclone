@@ -16,14 +16,18 @@ interface WorkspaceProps {
 const Workspace: React.FC<WorkspaceProps> = ({ pid }) => {
   const problem = problems[pid];
 
-  return (
-    <Box w={'auto'} marginInline={4} h={'full'} overflowX={'hidden'}>
-      <Split className="split split-horizontal" minSize={0}>
-        <ProblemDescription problem={problem} />
-        <Playground problem={problem} />
-      </Split>
-    </Box>
-  );
+  if (problem) {
+    return (
+      <Box w={'auto'} marginInline={4} h={'full'} overflowX={'hidden'}>
+        <Split className="split split-horizontal" minSize={0}>
+          <ProblemDescription problem={problem} />
+          <Playground problem={problem} />
+        </Split>
+      </Box>
+    );
+  } else {
+    throw new Error('Cannot find the Problem');
+  }
 };
 
 export default Workspace;

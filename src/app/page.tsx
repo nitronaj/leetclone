@@ -1,7 +1,7 @@
 'use client';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Center, Container, Spinner, Stack } from '@chakra-ui/react';
+import { Container, Stack } from '@chakra-ui/react';
 import { useRecoilValue } from 'recoil';
 
 import { authModalState } from '@/atoms/authModelAtom';
@@ -13,15 +13,7 @@ import { auth } from '@/firebase/firebase';
 
 export default function Home() {
   const authModel = useRecoilValue(authModalState);
-  const [user, loading] = useAuthState(auth);
-
-  if (loading) {
-    return (
-      <Center h={'100vh'}>
-        <Spinner mt={'-30%'} thickness="4px" speed="0.65s" emptyColor="gray.200" color="blue.500" size="xl" />
-      </Center>
-    );
-  }
+  const [user] = useAuthState(auth);
 
   return (
     <main>

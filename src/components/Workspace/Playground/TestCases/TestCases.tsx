@@ -27,7 +27,7 @@ const TestCases: React.FC<TestCasesProps> = ({ problem }) => {
   const bgColor = useColorModeValue('white', 'gray.800');
   const { examples } = problem;
   const selectedExample = examples[activeTestCaseId];
-  const inputs = selectedExample.inputText.split(',');
+  const inputs = selectedExample?.inputText.split(',');
 
   const handleClick = (index: number) => () => setActiveTestCaseId(index);
 
@@ -49,15 +49,15 @@ const TestCases: React.FC<TestCasesProps> = ({ problem }) => {
                   </Button>
                 ))}
               </HStack>
-              {inputs.map((input) => {
+              {inputs?.map((input, index) => {
                 const [inputText, inputValue] = input.split('=');
                 return (
-                  <>
+                  <Box key={index}>
                     <Text fontWeight={'semibold'}>{inputText}</Text>
                     <Code w={'full'} py={2} paddingInlineStart={2} borderRadius={'md'}>
                       {inputValue}
                     </Code>
-                  </>
+                  </Box>
                 );
               })}
 

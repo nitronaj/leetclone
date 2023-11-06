@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "db:push": "prisma db push",
+    "db:studio": "prisma studio",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.1.1",
@@ -18,15 +21,13 @@
     "@emotion/styled": "^11.11.0",
     "@monaco-editor/react": "^4.6.0",
     "@nikolovlazar/chakra-ui-prose": "^1.2.1",
+    "@prisma/client": "^5.5.2",
     "@t3-oss/env-nextjs": "^0.7.1",
     "@tanstack/react-query": "^4.36.1",
     "@trpc/client": "^10.43.0",
     "@trpc/next": "^10.43.0",
     "@trpc/react-query": "^10.43.0",
     "@trpc/server": "^10.43.0",
-    "@types/node": "20.5.7",
-    "@types/react": "18.2.21",
-    "@types/react-dom": "18.2.7",
     "@uiw/codemirror-theme-basic": "^4.21.20",
     "@uiw/codemirror-theme-vscode": "^4.21.20",
     "@uiw/react-codemirror": "^4.21.20",
@@ -42,6 +43,7 @@
     "react-icons": "^4.11.0",
     "react-split": "^2.0.14",
     "recoil": "^0.7.7",
+    "superjson": "^2.2.0",
     "tailwindcss": "3.3.3",
     "typescript": "5.2.2",
     "zod": "^3.22.4"
@@ -49,7 +51,11 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^14.0.0",
+    "@types/eslint": "^8.44.6",
     "@types/jest": "^29.5.6",
+    "@types/node": "^20.8.10",
+    "@types/react": "^18.2.34",
+    "@types/react-dom": "^18.2.14",
     "@typescript-eslint/eslint-plugin": "^6.9.1",
     "@typescript-eslint/parser": "^6.9.1",
     "css-loader": "^6.8.1",
@@ -62,6 +68,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "monaco-editor-webpack-plugin": "^7.1.0",
     "prettier-plugin-tailwindcss": "^0.5.6",
+    "prisma": "^5.5.2",
     "style-loader": "^3.3.3"
   }
 }

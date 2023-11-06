@@ -6,6 +6,7 @@ import {
   Box,
   Icon,
   Link,
+  Spinner,
   Table,
   TableContainer,
   Tbody,
@@ -18,9 +19,10 @@ import {
 } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
-import { MockProblem, mockProblems } from '@/mockProblems/problems';
-import { problems } from '@/utils/problems';
-import { Problem } from '@/utils/types/problem';
+import { type MockProblem, mockProblems } from '@/mockProblems/problems';
+import { api } from '@/trpc/react';
+// import { problems } from '@/utils/problems';
+import { type Problem } from '@/utils/types/problem';
 
 import YouTubeModal from '../Modals/YouTube';
 
@@ -34,14 +36,16 @@ export default function Problems() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [id, setID] = useState('');
 
+  const { data, isLoading } = api.problem.getProblems.useQuery();
+
   const handleVideoClick = (id: string) => () => {
     setID(id);
     onOpen();
   };
 
-  const ProblemList = Object.values(problems).map((problem: Problem, index) => {
+  const ProblemList = data?.map((problem: Problem, index) => {
     const mockProblem = mockProblems.find((p: MockProblem) => p.id === problem.id);
-    const difficultyColor = difficultyColors[mockProblem?.difficulty || 'Easy'];
+    const difficultyColor = difficultyColors[mockProblem?.difficulty ?? 'Easy'];
     return (
       <Tr key={problem.id}>
         <Td textAlign={'center'}>
